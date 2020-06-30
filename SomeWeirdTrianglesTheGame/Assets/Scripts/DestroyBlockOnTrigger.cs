@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class DestroyBlockOnTrigger : MonoBehaviour
 {
     public ParticleSystem exp;
     public SpriteRenderer graphics;
     public Collider2D col;
+    public GameObject player;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,6 +17,7 @@ public class DestroyBlockOnTrigger : MonoBehaviour
             Destroy(collision.gameObject);
             exp.Play();
             Destroy(gameObject, exp.main.duration);
+            player.GetComponent<ScoreCount>().Count(100);
         }
     }
 }
